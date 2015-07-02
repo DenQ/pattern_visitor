@@ -1,0 +1,1 @@
+class ElementA extends IElement
