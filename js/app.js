@@ -18,6 +18,10 @@
   IVisitor = (function() {
     function IVisitor() {}
 
+    IVisitor.prototype.visit = function(element) {
+      throw false;
+    };
+
     return IVisitor;
 
   })();
@@ -48,24 +52,14 @@
 
   })(IElement);
 
-
-  /*
-    context
-   */
-
-  elements = [new ElementA(), new ElementB()];
-
-  for (i = 0, len = elements.length; i < len; i++) {
-    item = elements[i];
-    item;
-  }
-
   Visitor1 = (function(superClass) {
     extend(Visitor1, superClass);
 
     function Visitor1() {
       return Visitor1.__super__.constructor.apply(this, arguments);
     }
+
+    Visitor1.prototype.visit = function(element) {};
 
     return Visitor1;
 
@@ -78,8 +72,23 @@
       return Visitor2.__super__.constructor.apply(this, arguments);
     }
 
+    Visitor2.prototype.visit = function(element) {};
+
     return Visitor2;
 
   })(IVisitor);
+
+
+  /*
+    context
+   */
+
+  elements = [new ElementA(), new ElementB()];
+
+  for (i = 0, len = elements.length; i < len; i++) {
+    item = elements[i];
+    item.accept(new Visitor1());
+    item.accept(new Visitor2());
+  }
 
 }).call(this);

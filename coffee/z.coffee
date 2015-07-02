@@ -4,4 +4,5 @@
 
 elements = [new ElementA(), new ElementB()]
 for item in elements
-  item
+  item.accept( new Visitor1() )
+  item.accept( new Visitor2() )
