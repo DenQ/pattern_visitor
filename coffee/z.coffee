@@ -2,7 +2,11 @@
   context
 ###
 
+visitor1 = new Visitor1()
+visitor2 = new Visitor2()
+
 elements = [new ElementA(), new ElementB()]
+
 for item in elements
-  item.accept( new Visitor1() )
-  item.accept( new Visitor2() )
+  item.accept visitor1
+  item.accept visitor2

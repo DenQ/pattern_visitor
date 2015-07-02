@@ -1,3 +1,5 @@
 class ElementB extends IElement
+  name: 'ElementB'
 
-  accept:(visitor)->
+  accept:(@visitor)->
+    @visitor.visit @
