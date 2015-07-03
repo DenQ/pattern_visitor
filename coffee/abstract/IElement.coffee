@@ -1,4 +1,4 @@
 class IElement
 
-  accept:(visitor)->
+  accept:(@visitor)->
     throw false

@@ -8,6 +8,7 @@
     function IElement() {}
 
     IElement.prototype.accept = function(visitor) {
+      this.visitor = visitor;
       throw false;
     };
 
@@ -16,11 +17,10 @@
   })();
 
   IVisitor = (function() {
-    function IVisitor() {
-      throw false;
-    }
+    function IVisitor() {}
 
     IVisitor.prototype.visit = function(element) {
+      this.element = element;
       throw false;
     };
 
@@ -37,8 +37,8 @@
 
     ElementA.prototype.name = 'ElementA';
 
-    ElementA.prototype.accept = function(visitor3) {
-      this.visitor = visitor3;
+    ElementA.prototype.accept = function(visitor) {
+      this.visitor = visitor;
       return this.visitor.visit(this);
     };
 
@@ -55,8 +55,8 @@
 
     ElementB.prototype.name = 'ElementB';
 
-    ElementB.prototype.accept = function(visitor3) {
-      this.visitor = visitor3;
+    ElementB.prototype.accept = function(visitor) {
+      this.visitor = visitor;
       return this.visitor.visit(this);
     };
 
@@ -67,10 +67,13 @@
   Visitor1 = (function(superClass) {
     extend(Visitor1, superClass);
 
-    function Visitor1() {}
+    function Visitor1() {
+      return Visitor1.__super__.constructor.apply(this, arguments);
+    }
 
     Visitor1.prototype.visit = function(element) {
-      return console.log('visit 1 to ' + element.name);
+      this.element = element;
+      return console.log('Visit 1 to ' + this.element.name);
     };
 
     return Visitor1;
@@ -80,10 +83,13 @@
   Visitor2 = (function(superClass) {
     extend(Visitor2, superClass);
 
-    function Visitor2() {}
+    function Visitor2() {
+      return Visitor2.__super__.constructor.apply(this, arguments);
+    }
 
     Visitor2.prototype.visit = function(element) {
-      return console.log('visit 2 to ' + element.name);
+      this.element = element;
+      return console.log('Visit 2 to ' + this.element.name);
     };
 
     return Visitor2;

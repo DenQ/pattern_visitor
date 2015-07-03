@@ -1,3 +1,3 @@
 class IVisitor
 
-  visit:(element)-> throw false
+  visit:(@element)-> throw false
