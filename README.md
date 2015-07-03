@@ -5,7 +5,7 @@ language: CoffeeScript
 status: complete
 
 UML diagram:
-![Image alt](https://github.com/DenQ/pattern_visitor/raw/master/uml/pattern_visitor.jpg)
+![Image alt](https://github.com/DenQ/pattern_visitor/raw/master/uml/pattern_visitor.jpeg)
 
 For run:
 ```
